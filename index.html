@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegance - Portofolio Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .bg-hero {
+            background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAQFBAYEBQQEBQgF\nBQYJCAcJCQQJCAoMDBwMDAwNDAwRDQ4PEA8REBYXEBQvJSUoLyxOMDAwNTEtPj4/ODw5\nOjtBQYJCAcJCQQJCAoMDBwMDAwNDAwRDQ4PEA8REBYXEBQvJSUoLyxOMDAwNTEtPj4/\nODw5\n/wAARCAE+AyADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEBAAAAAAAAAAECAwQFBgcICQoK\nC//EAAEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoKC//EADwQAAEDAwIEAwQFBgQEBg\nADAAEAAhECAwAEERIFITEFQWETIjJxgZFCQlKhsbHB0fAGMyTi8TRDUjThcpL/2gAMAw\n//2gAQBAADAAE/wDxA0gEBAQEBAQEBkBAQEBAQEBAQH/2gAEBAADAg/wAARAAAAAQEBAQEB\nAQEBkBAQEBAQEBAQH/2gAEBAADAg/wARAAAAAEBAQEBAQEBAQH/2gAEBAADAg/wARAAAA\n/9k=');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        .admin-page {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .section-container {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.5);
+        }
+        .glass-morphism {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+        .btn-secondary {
+            background-color: #cbd5e1;
+            color: #4a5568;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+    </style>
+</head>
+<body class="bg-hero">
+
+    <!-- Halaman Portofolio Utama -->
+    <div id="portfolio-page" class="min-h-screen transition-opacity duration-500 ease-in-out">
+        
+        <!-- Header & Hero Section -->
+        <header class="p-6">
+            <nav class="flex justify-between items-center max-w-7xl mx-auto">
+                <div class="text-2xl font-bold text-white">ELEGANCE</div>
+                <ul class="hidden md:flex space-x-6 text-white">
+                    <li><a href="#about" class="hover:text-blue-300 transition-colors">ABOUT</a></li>
+                    <li><a href="#what-i-do" class="hover:text-blue-300 transition-colors">WHAT I DO</a></li>
+                    <li><a href="#projects" class="hover:text-blue-300 transition-colors">PROJECTS</a></li>
+                    <li><a href="#testimonials" class="hover:text-blue-300 transition-colors">TESTIMONIALS</a></li>
+                    <li><a href="#contact" class="hover:text-blue-300 transition-colors">CONTACT</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="home" class="flex flex-col items-center justify-center min-h-screen text-center text-white px-4">
+            <div class="w-32 h-32 rounded-full border-4 border-white mb-6">
+                <!-- Foto profil -->
+                <img id="profile-picture-home" class="w-full h-full object-cover rounded-full" src="" alt="Foto Profil">
+            </div>
+            <h1 class="text-5xl font-bold mb-2 tracking-wide">HELLO, WELCOME TO</h1>
+            <h2 id="hero-name" class="text-7xl font-bold tracking-wider"></h2>
+            <p id="hero-subtitle" class="text-lg mt-4 max-w-2xl font-light"></p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 px-4">
+            <div class="max-w-7xl mx-auto p-8 rounded-2xl section-container">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-4xl font-bold mb-4 text-blue-800">WHO AM I?</h3>
+                        <p id="about-text" class="mb-6 leading-relaxed"></p>
+                        <div id="about-stats" class="grid grid-cols-3 gap-4 text-center mt-8">
+                            <!-- Stats will be populated by JS -->
+                        </div>
+                    </div>
+                    <div class="relative w-full h-96 rounded-2xl overflow-hidden glass-morphism">
+                        <img id="about-image" class="w-full h-full object-cover rounded-2xl" src="" alt="About Image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What I Do Section -->
+        <section id="what-i-do" class="py-16 px-4">
+            <div class="max-w-7xl mx-auto text-center p-8 rounded-2xl section-container">
+                <h3 class="text-4xl font-bold mb-8 text-blue-800">WHAT I DO?</h3>
+                <div id="what-i-do-cards" class="grid md:grid-cols-3 gap-8">
+                    <!-- Cards will be populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- My Skills Section -->
+        <section id="my-skills" class="py-16 px-4">
+            <div class="max-w-7xl mx-auto p-8 rounded-2xl section-container">
+                <h3 class="text-4xl font-bold mb-8 text-center text-blue-800">WHAT I'M SKILLED?</h3>
+                <div id="skills-list" class="space-y-4">
+                    <!-- Skills will be populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 px-4">
+            <div class="max-w-7xl mx-auto p-8 rounded-2xl section-container">
+                <h3 class="text-4xl font-bold mb-8 text-center text-blue-800">WHAT I'VE DONE?</h3>
+                <div id="projects-grid" class="grid md:grid-cols-3 gap-8">
+                    <!-- Projects will be populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-16 px-4">
+            <div class="max-w-7xl mx-auto p-8 rounded-2xl section-container">
+                <h3 class="text-4xl font-bold mb-8 text-center text-blue-800">WHAT THEY SAY?</h3>
+                <div id="testimonials-list" class="flex flex-col items-center space-y-8">
+                    <!-- Testimonials will be populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 px-4">
+            <div class="max-w-7xl mx-auto p-8 rounded-2xl section-container">
+                <h3 class="text-4xl font-bold mb-8 text-center text-blue-800">GET IN TOUCH!</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div id="contact-info" class="space-y-4">
+                        <!-- Contact info will be populated by JS -->
+                    </div>
+                    <form id="contact-form" class="space-y-4">
+                        <input type="text" placeholder="Nama Anda" class="form-input">
+                        <input type="email" placeholder="Email Anda" class="form-input">
+                        <textarea placeholder="Pesan Anda" rows="4" class="form-input"></textarea>
+                        <button type="submit" class="w-full btn-primary">KIRIM PESAN</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center p-6 text-white backdrop-filter backdrop-blur-sm bg-opacity-20 bg-black">
+            <p>&copy; 2024 ELEGANCE. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- Halaman Admin (tersembunyi secara default) -->
+    <div id="admin-page" class="hidden min-h-screen admin-page flex flex-col items-center justify-center p-4">
+        <div id="login-form" class="w-full max-w-sm bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold text-center mb-6">Admin Login</h2>
+            <input id="admin-username" type="text" placeholder="Username" class="form-input mb-4">
+            <input id="admin-password" type="password" placeholder="Password" class="form-input mb-4">
+            <button id="login-btn" class="w-full btn-primary">Login</button>
+            <p id="login-message" class="text-red-500 text-center mt-4 hidden"></p>
+        </div>
+
+        <div id="admin-panel" class="hidden w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg mt-8">
+            <h2 class="text-2xl font-bold mb-6 text-center">Admin Panel</h2>
+            <button id="logout-btn" class="absolute top-4 right-4 btn-secondary">Logout</button>
+            
+            <!-- Form untuk mengubah data JSON -->
+            <form id="json-editor-form" class="space-y-8">
+                
+                <!-- Section Home -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Beranda</h3>
+                    <label class="block mb-2">Nama Portofolio:</label>
+                    <input id="admin-hero-name" type="text" class="form-input mb-2">
+                    <label class="block mb-2">Subjudul:</label>
+                    <input id="admin-hero-subtitle" type="text" class="form-input mb-2">
+                    <label class="block mt-4 mb-2">Unggah Foto Profil:</label>
+                    <input id="admin-profile-picture" type="file" accept="image/*" class="form-input">
+                </div>
+
+                <!-- Section About -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Tentang</h3>
+                    <label class="block mb-2">Teks Tentang:</label>
+                    <textarea id="admin-about-text" class="form-input mb-2" rows="4"></textarea>
+                    <label class="block mt-4 mb-2">Unggah Gambar Tentang:</label>
+                    <input id="admin-about-image" type="file" accept="image/*" class="form-input">
+                </div>
+
+                <!-- Section What I Do -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Apa yang Saya Lakukan</h3>
+                    <div id="admin-what-i-do-container" class="space-y-4">
+                        <!-- What I Do items will be populated by JS -->
+                    </div>
+                    <button type="button" id="add-what-i-do" class="btn-primary mt-4">Tambah Item Baru</button>
+                </div>
+                
+                <!-- Section My Skills -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Keahlian</h3>
+                    <div id="admin-skills-container" class="space-y-4">
+                        <!-- Skills will be populated by JS -->
+                    </div>
+                    <button type="button" id="add-skill" class="btn-primary mt-4">Tambah Keahlian Baru</button>
+                </div>
+
+                <!-- Section Projects -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Proyek</h3>
+                    <div id="admin-projects-container" class="space-y-4">
+                        <!-- Project items will be populated by JS -->
+                    </div>
+                    <button type="button" id="add-project" class="btn-primary mt-4">Tambah Proyek Baru</button>
+                </div>
+
+                <!-- Section Testimonials -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Testimonial</h3>
+                    <div id="admin-testimonials-container" class="space-y-4">
+                        <!-- Testimonials will be populated by JS -->
+                    </div>
+                    <button type="button" id="add-testimonial" class="btn-primary mt-4">Tambah Testimonial Baru</button>
+                </div>
+
+                <!-- Section Contact -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Kontak</h3>
+                    <label class="block mb-2">Telepon:</label>
+                    <input id="admin-contact-phone" type="text" class="form-input mb-2">
+                    <label class="block mb-2">Email:</label>
+                    <input id="admin-contact-email" type="text" class="form-input mb-2">
+                    <label class="block mb-2">Alamat:</label>
+                    <input id="admin-contact-address" type="text" class="form-input mb-2">
+                </div>
+
+                <!-- Tombol Simpan -->
+                <button type="submit" class="w-full btn-primary">Simpan Perubahan</button>
+                <p id="save-message" class="text-center mt-4"></p>
+            </form>
+        </div>
+    </div>
+
+<script>
+    // --- DATABASE MOCKUP DENGAN JSON & BASE64 ---
+    // Gunakan localStorage sebagai database sederhana.
+    const localStorageKey = 'portfolioData';
+    const adminCredentials = { username: 'admin', password: 'password123' };
+
+    const initialData = {
+        name: "ELEGANCE",
+        subtitle: "Web Developer | UI/UX Designer | Graphic Designer",
+        profilePicture: "https://placehold.co/128x128/ffffff/000000?text=Foto",
+        about: {
+            text: "Seorang pengembang web yang bersemangat dengan pengalaman dalam membangun aplikasi modern dan responsif. Saya berfokus pada pengalaman pengguna yang intuitif dan desain yang menarik. Saya adalah seorang pembelajar seumur hidup yang selalu mengikuti tren dan teknologi terbaru.",
+            image: "https://placehold.co/600x400/3b82f6/ffffff?text=About+Image",
+            stats: [
+                { value: "4+", label: "Tahun Pengalaman" },
+                { value: "120+", label: "Proyek Selesai" },
+                { value: "8+", label: "Klien Senang" }
+            ]
+        },
+        whatIDo: [
+            { id: 1, title: "Desain UI/UX", description: "Menciptakan antarmuka yang intuitif dan pengalaman pengguna yang lancar.", icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-5H6l6-8v5h5l-6 8z" },
+            { id: 2, title: "Pengembangan Web", description: "Membangun situs web responsif dan aplikasi web berperforma tinggi.", icon: "M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM4 18h16V8h-8l-2-2H4v12z" },
+            { id: 3, title: "Pengembangan Mobile", description: "Membuat aplikasi mobile untuk platform Android dan iOS.", icon: "M15.5 1h-11C3.69 1 3 1.69 3 2.5v15c0 .81.69 1.5 1.5 1.5h11c.81 0 1.5-.69 1.5-1.5v-15c0-.81-.69-1.5-1.5-1.5zm-5.5 17c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm6.5-19.5h-13c-.83 0-1.5.67-1.5 1.5V17c0 .83.67 1.5 1.5 1.5h13c.83 0 1.5-.67 1.5-1.5v-13c0-.83-.67-1.5-1.5-1.5z" }
+        ],
+        skills: [
+            { id: 1, name: "Web Development", percentage: 90 },
+            { id: 2, name: "UI/UX Design", percentage: 85 },
+            { id: 3, name: "Graphic Design", percentage: 75 }
+        ],
+        projects: [
+            { id: 1, image: "https://placehold.co/400x300/e2e8f0/000000?text=Proyek+1", title: "Project A", description: "Sebuah aplikasi web inovatif untuk manajemen proyek.", tags: ["Web", "Design"] },
+            { id: 2, image: "https://placehold.co/400x300/e2e8f0/000000?text=Proyek+2", title: "Project B", description: "Sistem e-commerce lengkap dengan fitur pembayaran.", tags: ["eCommerce", "Backend"] },
+            { id: 3, image: "https://placehold.co/400x300/e2e8f0/000000?text=Proyek+3", title: "Project C", description: "Desain UI/UX untuk aplikasi mobile kesehatan.", tags: ["Mobile", "UX"] }
+        ],
+        testimonials: [
+            { id: 1, text: "Bekerja dengan Elegance adalah pengalaman yang luar biasa. Sangat profesional dan kreatif!", author: "Jane Doe" },
+            { id: 2, text: "Hasilnya melebihi ekspektasi. Kualitas kerja yang sangat tinggi dan responsif.", author: "John Smith" }
+        ],
+        contact: {
+            phone: "+62 812 3456 7890",
+            email: "info@elegance.com",
+            address: "Jl. Contoh No. 123, Jakarta"
+        }
+    };
+
+    // Fungsi untuk mendapatkan data dari localStorage atau inisialisasi
+    function getData() {
+        let data = localStorage.getItem(localStorageKey);
+        if (!data) {
+            localStorage.setItem(localStorageKey, JSON.stringify(initialData));
+            data = JSON.stringify(initialData);
+        }
+        return JSON.parse(data);
+    }
+
+    // Fungsi untuk menyimpan data ke localStorage
+    function saveData(data) {
+        localStorage.setItem(localStorageKey, JSON.stringify(data));
+        renderPortfolio();
+    }
+
+    // Fungsi untuk mengonversi file gambar menjadi Base64
+    function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+            reader.readAsDataURL(file);
+        });
+    }
+
+    // --- RENDERING FRONT-END ---
+
+    function renderPortfolio() {
+        const data = getData();
+
+        // Hero Section
+        document.getElementById('profile-picture-home').src = data.profilePicture;
+        document.getElementById('hero-name').textContent = data.name;
+        document.getElementById('hero-subtitle').textContent = data.subtitle;
+
+        // About Section
+        document.getElementById('about-text').textContent = data.about.text;
+        document.getElementById('about-image').src = data.about.image;
+        const statsContainer = document.getElementById('about-stats');
+        statsContainer.innerHTML = '';
+        data.about.stats.forEach(stat => {
+            const statDiv = document.createElement('div');
+            statDiv.className = 'glass-morphism p-4 rounded-xl';
+            statDiv.innerHTML = `<h4 class="text-3xl font-bold">${stat.value}</h4><p class="mt-2 text-sm">${stat.label}</p>`;
+            statsContainer.appendChild(statDiv);
+        });
+
+        // What I Do Section
+        const whatIDoContainer = document.getElementById('what-i-do-cards');
+        whatIDoContainer.innerHTML = '';
+        data.whatIDo.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'glass-morphism p-8 rounded-2xl flex flex-col items-center text-center';
+            card.innerHTML = `
+                <svg class="w-12 h-12 mb-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="${item.icon}"></path>
+                </svg>
+                <h4 class="text-xl font-semibold mb-2">${item.title}</h4>
+                <p class="text-sm text-gray-700">${item.description}</p>
+            `;
+            whatIDoContainer.appendChild(card);
+        });
+
+        // Skills Section
+        const skillsContainer = document.getElementById('skills-list');
+        skillsContainer.innerHTML = '';
+        data.skills.forEach(skill => {
+            const skillItem = document.createElement('div');
+            skillItem.className = 'flex items-center space-x-4';
+            skillItem.innerHTML = `
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: ${skill.percentage}%"></div>
+                </div>
+                <span class="text-sm font-medium text-gray-700 w-12 text-right">${skill.percentage}%</span>
+            `;
+            skillsContainer.appendChild(skillItem);
+        });
+
+        // Projects Section
+        const projectsContainer = document.getElementById('projects-grid');
+        projectsContainer.innerHTML = '';
+        data.projects.forEach(project => {
+            const card = document.createElement('div');
+            card.className = 'glass-morphism p-4 rounded-2xl flex flex-col items-center text-center';
+            card.innerHTML = `
+                <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover rounded-xl mb-4">
+                <h4 class="text-xl font-semibold">${project.title}</h4>
+                <p class="text-sm mt-2 text-gray-700">${project.description}</p>
+            `;
+            projectsContainer.appendChild(card);
+        });
+
+        // Testimonials Section
+        const testimonialsContainer = document.getElementById('testimonials-list');
+        testimonialsContainer.innerHTML = '';
+        data.testimonials.forEach(testimonial => {
+            const card = document.createElement('div');
+            card.className = 'glass-morphism p-8 rounded-2xl w-full max-w-2xl text-center';
+            card.innerHTML = `
+                <p class="text-lg font-medium italic mb-4">"${testimonial.text}"</p>
+                <p class="text-blue-500 font-semibold">- ${testimonial.author}</p>
+            `;
+            testimonialsContainer.appendChild(card);
+        });
+
+        // Contact Section
+        const contactContainer = document.getElementById('contact-info');
+        contactContainer.innerHTML = `
+            <div class="flex items-center space-x-3">
+                <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.05-.24.79.23 1.62.36 2.47.36.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.74 21 3 13.26 3 3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 .85.13 1.68.36 2.47.12.38.03.78-.24 1.05l-2.2 2.2z"/></svg>
+                <span>${data.contact.phone}</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <span>${data.contact.email}</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>${data.contact.address}</span>
+            </div>
+        `;
+    }
+
+    // --- AUTENTIKASI DAN ADMIN PANEL ---
+
+    const portfolioPage = document.getElementById('portfolio-page');
+    const adminPage = document.getElementById('admin-page');
+    const loginForm = document.getElementById('login-form');
+    const adminPanel = document.getElementById('admin-panel');
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const loginMessage = document.getElementById('login-message');
+    const saveMessage = document.getElementById('save-message');
+
+    // Menampilkan halaman admin atau login
+    function showAdminPage() {
+        portfolioPage.classList.add('hidden');
+        adminPage.classList.remove('hidden');
+    }
+
+    // Menampilkan halaman portofolio
+    function showPortfolioPage() {
+        portfolioPage.classList.remove('hidden');
+        adminPage.classList.add('hidden');
+    }
+
+    // Fungsi untuk mengisi form admin
+    function renderAdminForm() {
+        const data = getData();
+
+        // Home section
+        document.getElementById('admin-hero-name').value = data.name;
+        document.getElementById('admin-hero-subtitle').value = data.subtitle;
+
+        // About section
+        document.getElementById('admin-about-text').value = data.about.text;
+
+        // Contact section
+        document.getElementById('admin-contact-phone').value = data.contact.phone;
+        document.getElementById('admin-contact-email').value = data.contact.email;
+        document.getElementById('admin-contact-address').value = data.contact.address;
+
+        // Render dinamis untuk What I Do, Skills, Projects, Testimonials
+        renderWhatIDoAdmin(data.whatIDo);
+        renderSkillsAdmin(data.skills);
+        renderProjectsAdmin(data.projects);
+        renderTestimonialsAdmin(data.testimonials);
+    }
+    
+    // Render What I Do Admin
+    function renderWhatIDoAdmin(items) {
+        const container = document.getElementById('admin-what-i-do-container');
+        container.innerHTML = '';
+        items.forEach((item, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'p-4 border rounded-md relative';
+            itemDiv.setAttribute('data-id', item.id);
+            itemDiv.innerHTML = `
+                <button type="button" class="delete-btn absolute top-2 right-2 text-red-500 font-bold">X</button>
+                <h4 class="font-medium">Item ${index + 1}</h4>
+                <label class="block mt-2">Judul:</label>
+                <input type="text" class="form-input what-i-do-title" value="${item.title}">
+                <label class="block mt-2">Deskripsi:</label>
+                <textarea class="form-input what-i-do-description">${item.description}</textarea>
+                <label class="block mt-2">Ikon (SVG Path):</label>
+                <input type="text" class="form-input what-i-do-icon" value="${item.icon}">
+            `;
+            container.appendChild(itemDiv);
+        });
+    }
+
+    // Render Skills Admin
+    function renderSkillsAdmin(items) {
+        const container = document.getElementById('admin-skills-container');
+        container.innerHTML = '';
+        items.forEach((item, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'p-4 border rounded-md relative';
+            itemDiv.setAttribute('data-id', item.id);
+            itemDiv.innerHTML = `
+                <button type="button" class="delete-btn absolute top-2 right-2 text-red-500 font-bold">X</button>
+                <h4 class="font-medium">Keahlian ${index + 1}</h4>
+                <label class="block mt-2">Nama:</label>
+                <input type="text" class="form-input skill-name" value="${item.name}">
+                <label class="block mt-2">Persentase (0-100):</label>
+                <input type="number" class="form-input skill-percentage" value="${item.percentage}" min="0" max="100">
+            `;
+            container.appendChild(itemDiv);
+        });
+    }
+
+    // Render Projects Admin
+    function renderProjectsAdmin(items) {
+        const container = document.getElementById('admin-projects-container');
+        container.innerHTML = '';
+        items.forEach((item, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'p-4 border rounded-md relative';
+            itemDiv.setAttribute('data-id', item.id);
+            itemDiv.innerHTML = `
+                <button type="button" class="delete-btn absolute top-2 right-2 text-red-500 font-bold">X</button>
+                <h4 class="font-medium">Proyek ${index + 1}</h4>
+                <label class="block mt-2">Judul:</label>
+                <input type="text" class="form-input project-title" value="${item.title}">
+                <label class="block mt-2">Deskripsi:</label>
+                <textarea class="form-input project-description">${item.description}</textarea>
+                <label class="block mt-2">URL Gambar:</label>
+                <input type="text" class="form-input project-image" value="${item.image}">
+                <label class="block mt-4 mb-2">Unggah Gambar Baru:</label>
+                <input type="file" class="form-input project-image-upload" accept="image/*">
+            `;
+            container.appendChild(itemDiv);
+        });
+    }
+    
+    // Render Testimonials Admin
+    function renderTestimonialsAdmin(items) {
+        const container = document.getElementById('admin-testimonials-container');
+        container.innerHTML = '';
+        items.forEach((item, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'p-4 border rounded-md relative';
+            itemDiv.setAttribute('data-id', item.id);
+            itemDiv.innerHTML = `
+                <button type="button" class="delete-btn absolute top-2 right-2 text-red-500 font-bold">X</button>
+                <h4 class="font-medium">Testimonial ${index + 1}</h4>
+                <label class="block mt-2">Teks Testimonial:</label>
+                <textarea class="form-input testimonial-text">${item.text}</textarea>
+                <label class="block mt-2">Penulis:</label>
+                <input type="text" class="form-input testimonial-author" value="${item.author}">
+            `;
+            container.appendChild(itemDiv);
+        });
+    }
+
+    // Login handler
+    loginBtn.addEventListener('click', () => {
+        const username = document.getElementById('admin-username').value;
+        const password = document.getElementById('admin-password').value;
+
+        if (username === adminCredentials.username && password === adminCredentials.password) {
+            loginForm.classList.add('hidden');
+            adminPanel.classList.remove('hidden');
+            loginMessage.textContent = '';
+            renderAdminForm();
+        } else {
+            loginMessage.textContent = 'Username atau password salah.';
+            loginMessage.classList.remove('hidden');
+        }
+    });
+
+    // Logout handler
+    logoutBtn.addEventListener('click', () => {
+        loginForm.classList.remove('hidden');
+        adminPanel.classList.add('hidden');
+        showPortfolioPage();
+    });
+
+    // Form submit handler untuk admin panel
+    document.getElementById('json-editor-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const data = getData();
+        saveMessage.textContent = 'Menyimpan...';
+        saveMessage.style.color = 'blue';
+
+        // Unggah gambar profil
+        const profilePictureFile = document.getElementById('admin-profile-picture').files[0];
+        if (profilePictureFile) {
+            data.profilePicture = await fileToBase64(profilePictureFile);
+        }
+
+        // Unggah gambar about
+        const aboutImageFile = document.getElementById('admin-about-image').files[0];
+        if (aboutImageFile) {
+            data.about.image = await fileToBase64(aboutImageFile);
+        }
+
+        // Update Home section
+        data.name = document.getElementById('admin-hero-name').value;
+        data.subtitle = document.getElementById('admin-hero-subtitle').value;
+
+        // Update About section
+        data.about.text = document.getElementById('admin-about-text').value;
+
+        // Update Contact section
+        data.contact.phone = document.getElementById('admin-contact-phone').value;
+        data.contact.email = document.getElementById('admin-contact-email').value;
+        data.contact.address = document.getElementById('admin-contact-address').value;
+        
+        // Update What I Do (dinamis)
+        const whatIDoItems = document.querySelectorAll('#admin-what-i-do-container > div');
+        data.whatIDo = Array.from(whatIDoItems).map(itemDiv => ({
+            id: itemDiv.dataset.id,
+            title: itemDiv.querySelector('.what-i-do-title').value,
+            description: itemDiv.querySelector('.what-i-do-description').value,
+            icon: itemDiv.querySelector('.what-i-do-icon').value
+        }));
+
+        // Update Skills (dinamis)
+        const skillItems = document.querySelectorAll('#admin-skills-container > div');
+        data.skills = Array.from(skillItems).map(itemDiv => ({
+            id: itemDiv.dataset.id,
+            name: itemDiv.querySelector('.skill-name').value,
+            percentage: parseInt(itemDiv.querySelector('.skill-percentage').value)
+        }));
+
+        // Update Projects (dinamis)
+        const projectItems = document.querySelectorAll('#admin-projects-container > div');
+        for (const itemDiv of projectItems) {
+            const id = itemDiv.dataset.id;
+            const project = data.projects.find(p => p.id == id);
+            if (project) {
+                project.title = itemDiv.querySelector('.project-title').value;
+                project.description = itemDiv.querySelector('.project-description').value;
+                const imageUpload = itemDiv.querySelector('.project-image-upload');
+                if (imageUpload.files[0]) {
+                    project.image = await fileToBase64(imageUpload.files[0]);
+                } else {
+                    project.image = itemDiv.querySelector('.project-image').value;
+                }
+            }
+        }
+        
+        // Update Testimonials (dinamis)
+        const testimonialItems = document.querySelectorAll('#admin-testimonials-container > div');
+        data.testimonials = Array.from(testimonialItems).map(itemDiv => ({
+            id: itemDiv.dataset.id,
+            text: itemDiv.querySelector('.testimonial-text').value,
+            author: itemDiv.querySelector('.testimonial-author').value
+        }));
+
+        saveData(data);
+        saveMessage.textContent = 'Perubahan berhasil disimpan!';
+        saveMessage.style.color = 'green';
+        setTimeout(() => saveMessage.textContent = '', 3000);
+        renderAdminForm();
+    });
+
+    // Event listener untuk tombol "Admin"
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'a' && e.altKey) { // Alt + a untuk membuka panel admin
+            showAdminPage();
+        }
+    });
+
+    // Event listener untuk tombol "Add Item"
+    document.getElementById('add-what-i-do').addEventListener('click', () => {
+        const data = getData();
+        const newId = data.whatIDo.length > 0 ? Math.max(...data.whatIDo.map(i => i.id)) + 1 : 1;
+        data.whatIDo.push({ id: newId, title: "Item Baru", description: "Deskripsi item baru...", icon: "M0 0h24v24H0z" });
+        saveData(data);
+        renderWhatIDoAdmin(data.whatIDo);
+    });
+
+    document.getElementById('add-skill').addEventListener('click', () => {
+        const data = getData();
+        const newId = data.skills.length > 0 ? Math.max(...data.skills.map(i => i.id)) + 1 : 1;
+        data.skills.push({ id: newId, name: "Keahlian Baru", percentage: 50 });
+        saveData(data);
+        renderSkillsAdmin(data.skills);
+    });
+
+    document.getElementById('add-project').addEventListener('click', () => {
+        const data = getData();
+        const newId = data.projects.length > 0 ? Math.max(...data.projects.map(i => i.id)) + 1 : 1;
+        data.projects.push({ id: newId, image: "https://placehold.co/400x300/e2e8f0/000000?text=Proyek+Baru", title: "Proyek Baru", description: "Deskripsi proyek baru...", tags: [] });
+        saveData(data);
+        renderProjectsAdmin(data.projects);
+    });
+    
+    document.getElementById('add-testimonial').addEventListener('click', () => {
+        const data = getData();
+        const newId = data.testimonials.length > 0 ? Math.max(...data.testimonials.map(i => i.id)) + 1 : 1;
+        data.testimonials.push({ id: newId, text: "Teks testimonial baru...", author: "Penulis" });
+        saveData(data);
+        renderTestimonialsAdmin(data.testimonials);
+    });
+
+    // Event delegation untuk tombol delete
+    document.getElementById('admin-panel').addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete-btn')) {
+            const itemDiv = e.target.closest('div');
+            const idToDelete = itemDiv.dataset.id;
+            const data = getData();
+            
+            if (itemDiv.closest('#admin-what-i-do-container')) {
+                data.whatIDo = data.whatIDo.filter(item => item.id != idToDelete);
+                renderWhatIDoAdmin(data.whatIDo);
+            } else if (itemDiv.closest('#admin-skills-container')) {
+                data.skills = data.skills.filter(item => item.id != idToDelete);
+                renderSkillsAdmin(data.skills);
+            } else if (itemDiv.closest('#admin-projects-container')) {
+                data.projects = data.projects.filter(item => item.id != idToDelete);
+                renderProjectsAdmin(data.projects);
+            } else if (itemDiv.closest('#admin-testimonials-container')) {
+                data.testimonials = data.testimonials.filter(item => item.id != idToDelete);
+                renderTestimonialsAdmin(data.testimonials);
+            }
+            saveData(data);
+        }
+    });
+
+    // Render portofolio saat halaman dimuat
+    window.onload = renderPortfolio;
+</script>
+</body>
+</html>
